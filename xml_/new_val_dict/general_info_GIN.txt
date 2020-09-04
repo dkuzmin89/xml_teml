@@ -1,0 +1,1 @@
+{"Gross Nation Income (per capita US$, 2015)": "950.0", "Surviving Infants (surviving to 1 year per year, 2019)": "445239.0", "Total population (2019)": "13132792.0"}
