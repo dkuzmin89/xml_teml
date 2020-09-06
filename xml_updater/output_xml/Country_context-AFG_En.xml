@@ -1,17 +1,17 @@
 <GaviData>
   <BuildDate>2019-09-17T18:53:59.973</BuildDate>
   <DataSet>
-    <Data Value="38928341.0">
+    <Data>
       <Name>Total population (2019)</Name>
-      <Value>35,688,787</Value>
+      <Value>38928341.0</Value>
     </Data>
     <Data>
       <Name>Birth cohort (2019)</Name>
       <Value>1,083,460</Value>
     </Data>
-    <Data Value="1157321.0">
+    <Data>
       <Name>Surviving Infants (surviving to 1 year per year, 2019)</Name>
-      <Value>1,151,687</Value>
+      <Value>1157321.0</Value>
     </Data>
     <Data>
       <Name>Infant mortality rate (deaths &lt; 1 year per 1000 births, 2015)</Name>
@@ -25,9 +25,9 @@
       <Name>World Bank Index, IDA (2015)</Name>
       <Value>2.69</Value>
     </Data>
-    <Data Value="540.0">
+    <Data>
       <Name>Gross Nation Income (per capita US$, 2015)</Name>
-      <Value>610</Value>
+      <Value>540.0</Value>
     </Data>
     <Data>
       <Name>No. of districts/territories (2018)</Name>

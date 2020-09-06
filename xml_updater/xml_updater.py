@@ -63,7 +63,7 @@ for country_ in master_country_list:
     # Pick the closest match
     country = pycountry.countries.search_fuzzy(pycountry.remove_accents(country_))[0]
     iso3 = country.alpha_3
-    print(iso3)
+    # print(iso3)
     new_data_path = Path(f"new_values/general_info_{iso3}.json")
     xml_path = Path(f"input_xml/Country_context-{iso3}_En.xml")
 
@@ -82,7 +82,8 @@ for country_ in master_country_list:
     for field_name, new_value in new_data.items():
         value_element = root.find(f".//Data/[Name='{field_name}']")
         if value_element is not None:
-            value_element.set("Value", str(new_value))
+            elem_value_element = value_element.find("Value")
+            elem_value_element.text = str(new_value)
         else:
             value_element = root.find(f".//Data/")
             new_element = ET.Element("Data")
