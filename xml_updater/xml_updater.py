@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os
 import json
 import warnings
 from xml.etree import ElementTree as ET
@@ -26,7 +25,6 @@ country_iso = cg[['country', 'iso3', 'iso2', 'iso3_num']]
 country_iso.country.replace({"Bosnia and Herzegovina": "Bosnia & Herzegovina",
                              "Congo, Republic of": "Republic of the Congo",
                              "Congo, Democratic Republic of the": "Congo, The Democratic Republic of the",
-                             #"Côte d'Ivoire": "Côte d’Ivoire",
                              "Lao People's Democratic Republic": "Lao PDR",
                              "Sao Tome and Principe": "São Tomé and Príncipe",
                              "Tanzania, United Republic of": "Tanzania, UR",
@@ -79,21 +77,24 @@ for country_ in master_country_list:
     tree = ET.parse(xml_path)
 
     root = tree.getroot()
+    data_set = root.find("DataSet")
     for field_name, new_value in new_data.items():
-        value_element = root.find(f".//Data/[Name='{field_name}']")
-        if value_element is not None:
-            elem_value_element = value_element.find("Value")
-            elem_value_element.text = str(new_value)
+        data_element = data_set.find(f"./Data/[Name='{field_name}']")
+        if data_element is not None:
+            value_element = data_element.find("Value")
+            value_element.text = str(new_value)
         else:
-            value_element = root.find(f".//Data/")
+            # Preparing element for new type of data
             new_element = ET.Element("Data")
             new_name_elem = ET.Element("Name")
             new_name_elem.text = field_name
             new_value_elem = ET.Element("Value")
             new_value_elem.text = new_value
+
             new_element.append(new_name_elem)
             new_element.append(new_value_elem)
-            value_element.append(new_element)
+
+            data_set.append(new_element)
     # ET.dump(root)
     tree = ET.ElementTree(root)
     tree.write(f"output_xml/Country_context-{iso3}_En.xml")
